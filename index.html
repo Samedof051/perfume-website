@@ -50,10 +50,10 @@ textarea{width:100%;margin-top:15px;background:#1a1a1a;border:1px solid #333;col
 <section class="auth-screen active" id="authScreen">
 <div class="auth-box">
 <h1>RS</h1>
-<input type="text" placeholder="Adınız">
-<input type="email" placeholder="Email">
-<input type="password" placeholder="Şifrə">
-<button class="auth-btn" onclick="enterStore()">Daxil ol</button>
+<input type="text" id="nameInput" placeholder="Adınız">
+<input type="email" id="emailInput" placeholder="Email">
+<input type="password" id="passwordInput" placeholder="Şifrə">
+<button class="auth-btn" onclick="enterStore()">Daxil ol / Qeydiyyat</button>
 <p class="switch-text">Login / Register</p>
 </div>
 </section>
@@ -126,7 +126,21 @@ textarea{width:100%;margin-top:15px;background:#1a1a1a;border:1px solid #333;col
 <button class="back-btn" onclick="goHome()">← Geri</button>
 <div class="admin-box">
 <h1>Admin Panel</h1>
-<p>RS Luxury Perfume idarəetmə sistemi.</p>
+<p>Buradan özün məhsul əlavə edə bilərsən.</p>
+
+<input id="perfumeNameInput" placeholder="Etir adı" style="width:100%;margin-top:15px;padding:15px;background:#1a1a1a;border:1px solid #333;border-radius:12px;color:white">
+
+<input id="perfumeImageInput" placeholder="Şəkil linki və ya adı" style="width:100%;margin-top:15px;padding:15px;background:#1a1a1a;border:1px solid #333;border-radius:12px;color:white">
+
+<input id="perfumeSmellInput" placeholder="Qoxu haqqında" style="width:100%;margin-top:15px;padding:15px;background:#1a1a1a;border:1px solid #333;border-radius:12px;color:white">
+
+<input id="perfume30Input" placeholder="30ml qiymət" style="width:100%;margin-top:15px;padding:15px;background:#1a1a1a;border:1px solid #333;border-radius:12px;color:white">
+
+<input id="perfume50Input" placeholder="50ml qiymət" style="width:100%;margin-top:15px;padding:15px;background:#1a1a1a;border:1px solid #333;border-radius:12px;color:white">
+
+<input id="perfume100Input" placeholder="100ml qiymət" style="width:100%;margin-top:15px;padding:15px;background:#1a1a1a;border:1px solid #333;border-radius:12px;color:white">
+
+<button class="auth-btn" onclick="addPerfume()">Etiri Əlavə Et</button>
 </div>
 </section>
 
@@ -140,7 +154,18 @@ noir:{name:'Noir Blossom',image:'noir_blossom.jpg',desc:'Exclusive feminine luxu
 };
 let currentCollection='womenScreen';
 let currentPerfume='Aureline';
-function enterStore(){document.getElementById('authScreen').classList.remove('active');document.getElementById('homeScreen').classList.add('active');}
+function enterStore(){
+const name=document.getElementById('nameInput').value;
+const email=document.getElementById('emailInput').value;
+const password=document.getElementById('passwordInput').value;
+if(name.trim()===''||email.trim()===''||password.trim()===''){
+alert('Bütün xanaları doldur');
+return;
+}
+localStorage.setItem('rs-user',JSON.stringify({name,email}));
+document.getElementById('authScreen').classList.remove('active');
+document.getElementById('homeScreen').classList.add('active');
+}
 function openCollection(type){document.getElementById('homeScreen').classList.remove('active');currentCollection=type+'Screen';document.getElementById(currentCollection).classList.add('active');}
 function goHome(){document.querySelectorAll('.collection-screen,.perfume-screen,.admin-screen').forEach(e=>e.classList.remove('active'));document.getElementById('homeScreen').classList.add('active');}
 function backCollection(){document.getElementById('perfumeScreen').classList.remove('active');document.getElementById(currentCollection).classList.add('active');}
@@ -148,7 +173,33 @@ function openPerfume(id){const p=perfumes[id];currentPerfume=p.name;document.get
 function showVideo(){document.getElementById('perfumeImage').style.display='none';document.getElementById('perfumeVideo').style.display='block';}
 function showImage(){document.getElementById('perfumeImage').style.display='block';document.getElementById('perfumeVideo').style.display='none';}
 function addReview(){const input=document.getElementById('reviewInput');if(input.value.trim()==='') return;const div=document.createElement('div');div.className='review-item';div.innerText=input.value;document.getElementById('reviews').appendChild(div);input.value='';}
-function adminAccess(){const code=prompt('Admin code');if(code==='luxury-admin'){document.querySelectorAll('.home-screen,.collection-screen,.perfume-screen').forEach(e=>e.classList.remove('active'));document.getElementById('adminScreen').classList.add('active');}}
+function adminAccess(){
+const code=prompt('Admin code');
+if(code==='luxury-admin'){
+document.querySelectorAll('.home-screen,.collection-screen,.perfume-screen').forEach(e=>e.classList.remove('active'));
+document.getElementById('adminScreen').classList.add('active');
+}
+}
+
+function addPerfume(){
+const name=document.getElementById('perfumeNameInput').value;
+const image=document.getElementById('perfumeImageInput').value;
+if(name.trim()===''||image.trim()===''){
+alert('Etir adı və şəkil daxil et');
+return;
+}
+
+const card=document.createElement('div');
+card.className='perfume-card';
+card.innerHTML=`
+<img src="${image}">
+<h3>${name}</h3>
+`;
+
+document.querySelector('#womenScreen .perfume-list').appendChild(card);
+
+alert('Yeni etir əlavə edildi');
+}
 </script>
 </body>
 </html>
