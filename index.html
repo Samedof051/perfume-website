@@ -6,153 +6,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Perfume</title>
+<title>RS Luxury Perfume</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#000;color:#fff}
-.hero{padding:40px 20px}
-.title{text-align:center;font-size:42px;margin-bottom:35px}
-.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{background:#111;border:1px solid #222;border-radius:25px;overflow:hidden;cursor:pointer;transition:.3s}
-.card:hover{transform:translateY(-5px)}
-.card img{width:100%;height:340px;object-fit:cover}
-.card h2{padding:20px;font-size:34px}
-.collection{display:none;padding:30px 20px}
+button,input,textarea{font-family:inherit}
+.auth-screen,.home-screen,.collection-screen,.perfume-screen,.admin-screen{display:none;min-height:100vh;padding:25px}
+.active{display:block}
+.auth-box{max-width:420px;margin:80px auto;background:#111;border:1px solid #222;padding:30px;border-radius:25px}
+.auth-box h1{text-align:center;margin-bottom:25px;font-size:42px;letter-spacing:6px}
+.auth-box input{width:100%;margin-top:15px;padding:16px;background:#1a1a1a;border:1px solid #333;border-radius:14px;color:#fff}
+.auth-btn{width:100%;margin-top:20px;padding:16px;border:none;border-radius:14px;background:#fff;color:#000;font-weight:bold;font-size:18px;cursor:pointer}
+.switch-text{text-align:center;margin-top:20px;color:#aaa;cursor:pointer}
+.logo{text-align:center;font-size:72px;letter-spacing:8px;margin-top:120px}
+.subtitle{text-align:center;color:#888;margin-top:10px;margin-bottom:60px}
+.menu-buttons{max-width:420px;margin:auto;display:flex;flex-direction:column;gap:18px}
+.menu-buttons button{padding:20px;border:none;border-radius:20px;background:#111;color:#fff;font-size:24px;border:1px solid #333;cursor:pointer}
 .back-btn{background:#fff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:bold;cursor:pointer;margin-bottom:30px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px}
-.product{background:#111;border:1px solid #222;border-radius:25px;overflow:hidden}
-.product img,.product video{width:100%;height:330px;object-fit:cover}
-.media-buttons{display:flex;gap:10px;padding:15px}
-.media-buttons button{flex:1;padding:12px;border:none;border-radius:12px;background:#1f1f1f;color:#fff;font-weight:bold;cursor:pointer}
-.content{padding:20px}
-.content h3{font-size:34px;margin-bottom:10px}
-.desc{color:#bbb;line-height:1.6}
-.smell{margin-top:18px;background:#1a1a1a;padding:15px;border-radius:14px}
-.price-box{margin-top:18px;background:#1a1a1a;padding:14px;border-radius:14px;display:flex;justify-content:space-between;align-items:center}
-.buy-btn{background:#fff;color:#000;text-decoration:none;padding:10px 15px;border-radius:10px;font-weight:bold}
-.reviews{margin-top:18px;background:#1a1a1a;padding:15px;border-radius:14px}
-.review-item{margin-top:10px;background:#222;padding:10px;border-radius:10px}
-textarea{width:100%;margin-top:15px;background:#111;border:1px solid #333;color:#fff;padding:14px;border-radius:14px;min-height:90px}
-.review-btn{margin-top:10px;background:#fff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:bold;cursor:pointer}
+.perfume-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.perfume-card{background:#111;border:1px solid #222;border-radius:25px;overflow:hidden;cursor:pointer}
+.perfume-card img{width:100%;height:300px;object-fit:contain;background:#0a0a0a}
+.perfume-card h3{text-align:center;padding:20px;font-size:28px}
+.perfume-main img,.perfume-main video{width:100%;height:420px;object-fit:contain;background:#0a0a0a;border-radius:25px}
+.media-buttons{display:flex;gap:10px;margin-top:15px}
+.media-buttons button{flex:1;padding:14px;border:none;border-radius:14px;background:#111;color:#fff;cursor:pointer}
+.perfume-info{margin-top:25px}
+.perfume-info h2{font-size:42px;margin-bottom:10px}
+.desc{color:#aaa;line-height:1.7}
+.smell-box{margin-top:18px;background:#111;padding:18px;border-radius:18px}
+.price-row{display:flex;justify-content:space-between;align-items:center;background:#111;padding:16px;border-radius:16px;margin-top:15px;gap:15px}
+.contact-btn{text-decoration:none;background:#fff;color:#000;padding:10px 16px;border-radius:12px;font-weight:bold}
+.reviews-box{margin-top:25px;background:#111;padding:18px;border-radius:18px}
+.review-item{background:#1c1c1c;padding:12px;border-radius:12px;margin-top:10px}
+textarea{width:100%;margin-top:15px;background:#1a1a1a;border:1px solid #333;color:#fff;padding:15px;border-radius:14px;min-height:90px}
+.review-btn{margin-top:12px;background:#fff;color:#000;border:none;padding:12px 18px;border-radius:12px;font-weight:bold;cursor:pointer}
 .secret-admin{position:fixed;top:5px;left:5px;width:14px;height:14px;opacity:.01;z-index:9999;cursor:pointer}
-.admin-panel{display:none;padding:40px 20px}
-.admin-box{background:#111;border:1px solid #222;padding:30px;border-radius:20px}
+.admin-box{background:#111;border:1px solid #222;border-radius:25px;padding:30px;margin-top:40px}
 </style>
 </head>
 <body>
 <div class="secret-admin" onclick="adminAccess()"></div>
 
-<section class="hero" id="home">
-<div style="max-width:420px;margin:auto;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:25px">
-<h1 style="font-size:70px;font-weight:300;letter-spacing:8px">RS</h1>
-<p style="color:#aaa">Luxury Perfume</p>
-
-<button onclick="openCollection('men')" style="width:100%;padding:18px;border:none;border-radius:18px;background:#111;color:#fff;font-size:22px;border:1px solid #333;cursor:pointer">Men</button>
-
-<button onclick="openCollection('women')" style="width:100%;padding:18px;border:none;border-radius:18px;background:#111;color:#fff;font-size:22px;border:1px solid #333;cursor:pointer">Women</button>
-
-<button onclick="openCollection('unisex')" style="width:100%;padding:18px;border:none;border-radius:18px;background:#111;color:#fff;font-size:22px;border:1px solid #333;cursor:pointer">Unisex</button>
+<section class="auth-screen active" id="authScreen">
+<div class="auth-box">
+<h1>RS</h1>
+<input type="text" placeholder="Adınız">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Şifrə">
+<button class="auth-btn" onclick="enterStore()">Daxil ol</button>
+<p class="switch-text">Login / Register</p>
 </div>
 </section>
 
-<section class="collection" id="women">
-<button class="back-btn" onclick="goBack()">← Geri</button>
-<div class="products">
-<div class="product">
-<img id="womenImg1" src="aureline.jpg">
-<video id="womenVideo1" src="https://www.w3schools.com/html/mov_bbb.mp4" controls style="display:none"></video>
-<div class="media-buttons">
-<button onclick="showImage('womenImg1','womenVideo1')">Şəkil</button>
-<button onclick="showVideo('womenImg1','womenVideo1')">Video</button>
+<section class="home-screen" id="homeScreen">
+<h1 class="logo">RS</h1>
+<p class="subtitle">Luxury Perfume</p>
+<div class="menu-buttons">
+<button onclick="openCollection('women')">Women</button>
+<button onclick="openCollection('men')">Men</button>
+<button onclick="openCollection('unisex')">Unisex</button>
 </div>
-<div class="content">
+</section>
+
+<section class="collection-screen" id="womenScreen">
+<button class="back-btn" onclick="goHome()">← Geri</button>
+<div class="perfume-list">
+<div class="perfume-card" onclick="openPerfume('aureline')">
+<img src="aureline.jpg">
 <h3>Aureline</h3>
-<p class="desc">Premium feminine luxury fragrance.</p>
-<div class="smell">Elegant floral və luxury qızılı notlar.</div>
-<div class="price-box"><span>30ml - 35 AZN</span><a class="buy-btn" href="https://wa.me/994552757919?text=Aureline%2030ml%20isteyirem">Əlaqə</a></div>
-<div class="price-box"><span>50ml - 58 AZN</span><a class="buy-btn" href="https://wa.me/994552757919?text=Aureline%2050ml%20isteyirem">Əlaqə</a></div>
-<div class="price-box"><span>100ml - 95 AZN</span><a class="buy-btn" href="https://wa.me/994552757919?text=Aureline%20100ml%20isteyirem">Əlaqə</a></div>
-<details class="reviews"><summary>Rəyləri Gör</summary><div id="reviews1"></div></details>
-<textarea id="input1" placeholder="Rəy yaz..."></textarea>
-<button class="review-btn" onclick="addReview('input1','reviews1')">Rəy əlavə et</button>
 </div>
+<div class="perfume-card" onclick="openPerfume('velvet')">
+<img src="velvet_rouge.jpg">
+<h3>Velvet Rouge</h3>
 </div>
+<div class="perfume-card" onclick="openPerfume('lumiere')">
+<img src="lumiere_gold.jpg">
+<h3>Lumière Gold</h3>
 </div>
-</section>
-
-<section class="collection" id="men">
-<button class="back-btn" onclick="goBack()">← Geri</button>
-<div class="products">
-<div class="product">
-<img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1200&auto=format&fit=crop">
-<div class="content">
-<h3>Noir Essence</h3>
-<p class="desc">Luxury masculine fragrance.</p>
-<div class="smell">Woody və premium ağır kişi qoxusu.</div>
-<div class="price-box"><span>50ml - 45 AZN</span><a class="buy-btn" href="https://wa.me/994552757919">Əlaqə</a></div>
+<div class="perfume-card" onclick="openPerfume('royal')">
+<img src="royal_amber.jpg">
+<h3>Royal Amber</h3>
 </div>
+<div class="perfume-card" onclick="openPerfume('noir')">
+<img src="noir_blossom.jpg">
+<h3>Noir Blossom</h3>
 </div>
 </div>
 </section>
 
-<section class="collection" id="unisex">
-<button class="back-btn" onclick="goBack()">← Geri</button>
-<div class="products">
-<div class="product">
-<img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=1200&auto=format&fit=crop">
-<div class="content">
-<h3>Silver Shadow</h3>
-<p class="desc">Premium unisex fragrance.</p>
-<div class="smell">Fresh clean luxury vibe.</div>
-<div class="price-box"><span>50ml - 49 AZN</span><a class="buy-btn" href="https://wa.me/994552757919">Əlaqə</a></div>
+<section class="perfume-screen" id="perfumeScreen">
+<button class="back-btn" onclick="backCollection()">← Geri</button>
+<div class="perfume-main">
+<img id="perfumeImage" src="aureline.jpg">
+<video id="perfumeVideo" src="https://www.w3schools.com/html/mov_bbb.mp4" controls style="display:none"></video>
 </div>
+<div class="media-buttons">
+<button onclick="showImage()">Şəkil</button>
+<button onclick="showVideo()">Video</button>
+</div>
+<div class="perfume-info">
+<h2 id="perfumeName">Aureline</h2>
+<p class="desc" id="perfumeDesc">Premium feminine luxury fragrance.</p>
+<div class="smell-box" id="perfumeSmell">Elegant floral və luxury qızılı notlar.</div>
+<div class="price-row"><span>30ml - 35 AZN</span><a class="contact-btn" id="link30" href="#">Əlaqə</a></div>
+<div class="price-row"><span>50ml - 58 AZN</span><a class="contact-btn" id="link50" href="#">Əlaqə</a></div>
+<div class="price-row"><span>100ml - 95 AZN</span><a class="contact-btn" id="link100" href="#">Əlaqə</a></div>
+<div class="reviews-box">
+<details>
+<summary>Rəyləri Gör</summary>
+<div id="reviews"></div>
+</details>
+<textarea id="reviewInput" placeholder="Rəy yaz..."></textarea>
+<button class="review-btn" onclick="addReview()">Rəy əlavə et</button>
 </div>
 </div>
 </section>
 
-<section class="admin-panel" id="admin">
+<section class="admin-screen" id="adminScreen">
+<button class="back-btn" onclick="goHome()">← Geri</button>
 <div class="admin-box">
 <h1>Admin Panel</h1>
-<p>Luxury Perfume admin sistemi.</p>
+<p>RS Luxury Perfume idarəetmə sistemi.</p>
 </div>
 </section>
 
 <script>
-function openCollection(id){
-document.getElementById('home').style.display='none';
-document.getElementById(id).style.display='block';
-}
-function goBack(){
-document.getElementById('home').style.display='block';
-document.getElementById('women').style.display='none';
-document.getElementById('men').style.display='none';
-document.getElementById('unisex').style.display='none';
-document.getElementById('admin').style.display='none';
-}
-function showVideo(img,video){
-document.getElementById(img).style.display='none';
-document.getElementById(video).style.display='block';
-}
-function showImage(img,video){
-document.getElementById(img).style.display='block';
-document.getElementById(video).style.display='none';
-}
-function addReview(input,reviews){
-const text=document.getElementById(input).value;
-if(text.trim()==='') return;
-const div=document.createElement('div');
-div.className='review-item';
-div.innerText=text;
-document.getElementById(reviews).appendChild(div);
-document.getElementById(input).value='';
-}
-function adminAccess(){
-const code=prompt('Admin code');
-if(code==='luxury-admin'){
-document.getElementById('home').style.display='none';
-document.getElementById('admin').style.display='block';
-}
-}
+const perfumes={
+aureline:{name:'Aureline',image:'aureline.jpg',desc:'Premium feminine luxury fragrance.',smell:'Elegant floral və luxury qızılı notlar.'},
+velvet:{name:'Velvet Rouge',image:'velvet_rouge.jpg',desc:'Deep sensual feminine perfume.',smell:'Dark cherry və velvet luxury hissiyatı.'},
+lumiere:{name:'Lumière Gold',image:'lumiere_gold.jpg',desc:'Bright luxury feminine scent.',smell:'Soft gold vanilla və clean floral notlar.'},
+royal:{name:'Royal Amber',image:'royal_amber.jpg',desc:'Elegant royal collection perfume.',smell:'Warm amber və creamy premium qoxu.'},
+noir:{name:'Noir Blossom',image:'noir_blossom.jpg',desc:'Exclusive feminine luxury perfume.',smell:'Luxury blossom və mysterious floral vibe.'}
+};
+let currentCollection='womenScreen';
+let currentPerfume='Aureline';
+function enterStore(){document.getElementById('authScreen').classList.remove('active');document.getElementById('homeScreen').classList.add('active');}
+function openCollection(type){document.getElementById('homeScreen').classList.remove('active');currentCollection=type+'Screen';document.getElementById(currentCollection).classList.add('active');}
+function goHome(){document.querySelectorAll('.collection-screen,.perfume-screen,.admin-screen').forEach(e=>e.classList.remove('active'));document.getElementById('homeScreen').classList.add('active');}
+function backCollection(){document.getElementById('perfumeScreen').classList.remove('active');document.getElementById(currentCollection).classList.add('active');}
+function openPerfume(id){const p=perfumes[id];currentPerfume=p.name;document.getElementById(currentCollection).classList.remove('active');document.getElementById('perfumeScreen').classList.add('active');document.getElementById('perfumeName').innerText=p.name;document.getElementById('perfumeImage').src=p.image;document.getElementById('perfumeDesc').innerText=p.desc;document.getElementById('perfumeSmell').innerText=p.smell;document.getElementById('link30').href=`https://wa.me/994552757919?text=${p.name}%2030ml%20isteyirem`;document.getElementById('link50').href=`https://wa.me/994552757919?text=${p.name}%2050ml%20isteyirem`;document.getElementById('link100').href=`https://wa.me/994552757919?text=${p.name}%20100ml%20isteyirem`;}
+function showVideo(){document.getElementById('perfumeImage').style.display='none';document.getElementById('perfumeVideo').style.display='block';}
+function showImage(){document.getElementById('perfumeImage').style.display='block';document.getElementById('perfumeVideo').style.display='none';}
+function addReview(){const input=document.getElementById('reviewInput');if(input.value.trim()==='') return;const div=document.createElement('div');div.className='review-item';div.innerText=input.value;document.getElementById('reviews').appendChild(div);input.value='';}
+function adminAccess(){const code=prompt('Admin code');if(code==='luxury-admin'){document.querySelectorAll('.home-screen,.collection-screen,.perfume-screen').forEach(e=>e.classList.remove('active'));document.getElementById('adminScreen').classList.add('active');}}
 </script>
 </body>
 </html>
