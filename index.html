@@ -1,8 +1,11 @@
+# Luxury Perfume - Updated index.html
+
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="az">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luxury Perfume</title>
 
   <style>
@@ -10,71 +13,28 @@
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family:Arial, sans-serif;
+      font-family:Arial;
     }
 
     body{
       background:#000;
-      color:#fff;
-    }
-
-    header{
-      height:100vh;
-      background:url('https://images.unsplash.com/photo-1519669011783-4eaa95fa1b7d?q=80&w=1600&auto=format&fit=crop') center/cover;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      position:relative;
-    }
-
-    header::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,0.6);
+      color:white;
     }
 
     .hero{
-      position:relative;
-      z-index:2;
-      padding:20px;
+      padding:60px 20px;
     }
 
-    .hero h1{
-      font-size:70px;
-      margin-bottom:20px;
+    .title{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:40px;
     }
 
-    .hero p{
-      color:#ccc;
-      margin-bottom:30px;
-      font-size:18px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:15px 35px;
-      background:#fff;
-      color:#000;
-      text-decoration:none;
-      border-radius:40px;
-      font-weight:bold;
-    }
-
-    section{
-      padding:80px 8%;
-    }
-
-    .section-title{
-      font-size:40px;
-      margin-bottom:50px;
-    }
-
-    .products{
+    .categories{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
     }
 
     .card{
@@ -82,160 +42,261 @@
       border-radius:25px;
       overflow:hidden;
       border:1px solid #222;
-      transition:0.3s;
+      cursor:pointer;
+      transition:.4s;
     }
 
     .card:hover{
-      transform:translateY(-5px);
-      border-color:#fff;
+      transform:scale(1.02);
     }
 
     .card img{
       width:100%;
-      height:350px;
+      height:300px;
       object-fit:cover;
     }
 
-    .card-content{
-      padding:25px;
+    .card h2{
+      padding:20px;
+      font-size:32px;
     }
 
-    .card h3{
-      font-size:28px;
-      margin-bottom:10px;
+    .collection{
+      display:none;
+      padding:30px 20px;
     }
 
-    .card p{
-      color:#aaa;
-      line-height:1.7;
+    .back{
+      background:white;
+      color:black;
+      border:none;
+      padding:12px 20px;
+      border-radius:12px;
+      font-weight:bold;
+      margin-bottom:30px;
+      cursor:pointer;
+    }
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .product{
+      background:#111;
+      border-radius:25px;
+      overflow:hidden;
+      border:1px solid #222;
+    }
+
+    .product img,
+    .product video{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+    }
+
+    .content{
+      padding:20px;
+    }
+
+    .content h3{
+      font-size:30px;
       margin-bottom:15px;
     }
 
+    .smell{
+      margin-top:15px;
+      background:#1a1a1a;
+      padding:15px;
+      border-radius:14px;
+    }
+
     .price{
-      font-size:28px;
-      font-weight:bold;
-      margin-bottom:20px;
-    }
-
-    .whatsapp{
-      display:block;
-      width:100%;
-      text-align:center;
-      background:#fff;
-      color:#000;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:15px;
+      background:#1a1a1a;
       padding:14px;
-      border-radius:15px;
+      border-radius:14px;
+    }
+
+    .buy{
+      background:white;
+      color:black;
       text-decoration:none;
+      padding:10px 14px;
+      border-radius:10px;
       font-weight:bold;
     }
 
-    footer{
-      border-top:1px solid #222;
-      padding:40px;
-      text-align:center;
-      color:#777;
+    details{
+      margin-top:15px;
+      background:#1a1a1a;
+      padding:15px;
+      border-radius:14px;
     }
+
+    textarea{
+      width:100%;
+      margin-top:15px;
+      background:#1a1a1a;
+      border:1px solid #333;
+      color:white;
+      padding:15px;
+      border-radius:14px;
+      min-height:90px;
+    }
+
+    .review-btn{
+      margin-top:10px;
+      background:white;
+      color:black;
+      border:none;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .secret-admin{
+      position:fixed;
+      top:5px;
+      left:5px;
+      width:15px;
+      height:15px;
+      opacity:0.01;
+      z-index:999;
+    }
+
+    .admin-panel{
+      display:none;
+      padding:40px 20px;
+    }
+
+    .admin-box{
+      background:#111;
+      border:1px solid #222;
+      padding:30px;
+      border-radius:20px;
+    }
+
   </style>
 </head>
-
 <body>
 
-<header>
-  <div class="hero">
-    <h1>LUXURY PERFUME</h1>
-    <p>Premium inspired fragrances with unforgettable scent.</p>
+<div class="secret-admin" onclick="adminAccess()"></div>
 
-    <a href="#men" class="btn">Explore Collection</a>
-  </div>
-</header>
+<section class="hero" id="home">
+  <h1 class="title">Luxury Perfume</h1>
 
-<section id="men">
-  <h2 class="section-title">Men Collection</h2>
+  <div class="categories">
 
-  <div class="products">
-
-    <div class="card">
+    <div class="card" onclick="openCollection('men')">
       <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="card-content">
-        <h3>Noir Essence</h3>
-
-        <p>Luxury masculine fragrance with long lasting woody notes.</p>
-
-        <div class="price">45 AZN</div>
-
-        <a class="whatsapp"
-        href="https://wa.me/994552757919?text=Salam%20Noir%20Essence%20sifaris%20etmek%20isteyirem">
-        WhatsApp Order
-        </a>
-      </div>
+      <h2>Men Collection</h2>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1200&auto=format&fit=crop">
+    <div class="card" onclick="openCollection('women')">
+      <img src="aureline.jpg">
+      <h2>Women Collection</h2>
+    </div>
 
-      <div class="card-content">
-        <h3>Velvet Oud</h3>
-
-        <p>Elegant oud inspired perfume designed for night wear.</p>
-
-        <div class="price">75 AZN</div>
-
-        <a class="whatsapp"
-        href="https://wa.me/994552557919?text=Salam%20Velvet%20Oud%20sifaris%20etmek%20isteyirem">
-        WhatsApp Order
-        </a>
-      </div>
+    <div class="card" onclick="openCollection('unisex')">
+      <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=1200&auto=format&fit=crop">
+      <h2>Unisex Collection</h2>
     </div>
 
   </div>
 </section>
 
-<section id="women">
-  <h2 class="section-title">Women Collection</h2>
+<section class="collection" id="women">
+  <button class="back" onclick="goBack()">← Geri</button>
 
   <div class="products">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1615634262417-0f3b4d2b6d4c?q=80&w=1200&auto=format&fit=crop">
+    <div class="product">
+      <img src="aureline.jpg">
 
-      <div class="card-content">
-        <h3>Rose Elixir</h3>
+      <div class="content">
+        <h3>Aureline</h3>
+        <p>Premium feminine luxury fragrance.</p>
 
-        <p>Elegant floral fragrance with vanilla and musk notes.</p>
+        <div class="smell">
+          Elegant floral və luxury qızılı notlar.
+        </div>
 
-        <div class="price">48 AZN</div>
+        <div class="price">
+          <span>50ml - 58 AZN</span>
+          <a class="buy" href="https://wa.me/994552757919">Əlaqə</a>
+        </div>
 
-        <a class="whatsapp"
-        href="https://wa.me/994552557919?text=Salam%20Rose%20Elixir%20sifaris%20etmek%20isteyirem">
-        WhatsApp Order
-        </a>
+        <details>
+          <summary>Rəyləri Gör</summary>
+          <p>Hələ rəy yoxdur.</p>
+        </details>
+
+        <textarea placeholder="Rəy yaz..."></textarea>
+        <button class="review-btn">Rəy əlavə et</button>
       </div>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=1200&auto=format&fit=crop">
+    <div class="product">
+      <img src="velvet_rouge.jpg">
 
-      <div class="card-content">
-        <h3>Velvet Bloom</h3>
+      <div class="content">
+        <h3>Velvet Rouge</h3>
+        <p>Deep sensual feminine perfume.</p>
 
-        <p>Sweet luxurious fragrance for modern elegance.</p>
+        <div class="smell">
+          Dark cherry və velvet luxury hissiyatı.
+        </div>
 
-        <div class="price">72 AZN</div>
-
-        <a class="whatsapp"
-        href="https://wa.me/994552557919?text=Salam%20Velvet%20Bloom%20sifaris%20etmek%20isteyirem">
-        WhatsApp Order
-        </a>
+        <div class="price">
+          <span>50ml - 62 AZN</span>
+          <a class="buy" href="https://wa.me/994552757919">Əlaqə</a>
+        </div>
       </div>
     </div>
 
   </div>
 </section>
 
-<footer>
-  © 2026 Luxury Perfume — All rights reserved.
-</footer>
+<section class="admin-panel" id="admin">
+  <div class="admin-box">
+    <h1>Admin Panel</h1>
+    <br>
+    <p>Buradan sistemi idarə edə bilərsən.</p>
+  </div>
+</section>
+
+<script>
+
+function openCollection(id){
+  document.getElementById('home').style.display='none';
+  document.getElementById(id).style.display='block';
+}
+
+function goBack(){
+  document.getElementById('home').style.display='block';
+  document.getElementById('women').style.display='none';
+  document.getElementById('men').style.display='none';
+  document.getElementById('unisex').style.display='none';
+}
+
+function adminAccess(){
+  let code = prompt('Admin code');
+
+  if(code === 'luxury-admin'){
+    document.getElementById('admin').style.display='block';
+    document.getElementById('home').style.display='none';
+  }
+}
+
+</script>
 
 </body>
 </html>
+```
